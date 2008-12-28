@@ -1,0 +1,2 @@
+PROJECT(mpkg)
+ADD_SUBDIRECTORY(src)

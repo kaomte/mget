@@ -1,0 +1,100 @@
+=head1 NAME
+
+mget - download videos off video hosting sites
+
+=head1 SYNOPSIS
+
+mget [options...] [url]
+
+=head1 DESCRIPTION
+
+Movie Get aims to be a simple console script allowing a user to download embeded movies from various video hosting services. It uses common *nix programs to download the file and convert it from flv to mpg format. The main work of mget is to get the direct video link, which it achieves with the help of the great ruby programming language.
+
+=head1 OPTIONS
+
+B<-h>
+B<--help>
+  Display a short help text and exits
+
+B<-n>
+B<--name>
+  Save the video with the specified name. If no name is supplied the file will be named using the scheme: MovieSiteXXXXXX where XXXXXX is a unique integer. This flag doesn't work if input is taken from a file. The file extension will be added automatically.
+
+B<-i>
+B<--input>
+  Reads movie links from a file. Each link should be on one line by itself. With this option all movies will be downloaded into directories named after the hosting site. In example movies downloaded from Youtube will go to Youtube/YoutubeXXXXXX where XXXXXX is an unique integer.
+
+B<-d>
+B<--download>
+  If this flag is set the script downloads videos without prompting the user.
+
+B<-D>
+B<--nodownload>
+  If this flag is set then no files are downloaded.
+  This flag also automatically sets the B<-C> and B<-s> flags.
+
+B<-c>
+B<--convert>
+  Converts all downloaded files that are convertable without prompting the user.
+  This flag also automatically sets the B<-d> flag
+
+B<-C>
+B<--noconvert>
+  If this flag is set then no files are converted.
+
+B<-r>
+B<--remove>
+  If this flag is set then leftover files from conversion are removed without prompting the user.
+
+B<-R>
+B<--noremove>
+  If this flag is set then B<no> leftover files are removed and the user is not prompted.
+
+B<-s>
+B<--show>
+  If this flag is set then the direct link to download the movie is printed on the screen. You can then take this link and paste it directly into your browser to start the download.
+
+B<-q>
+B<--quiet>
+  This flag hides output from wget (and wget only).
+
+B<-v>
+B<--version>
+  Prints the version number and exits.
+
+=head1 EXAMPLES
+
+B<mget -cr url>
+  Will download the video from the url, convert it and remove the leftover file without prompting the user on each step.
+
+B<mget -dC url>
+  Will download the movie, but will not attempt to convert it. Again the user will not be prompted.
+
+B<mget -n cool_movie url>
+  Will ask the user to download the movie or not. Will ask to convert the movie or not (if the movie is convertable). Will ask if it should remove the leftover files (if conversion occured). And will save the movie as cool_movie.extension where extension is determined automatically by the script.
+
+B<mget -cr -i file>
+  The script will read movie links from the file line by line. It will download each movie, convert it if the movie is convertable and remove the leftover file. The downloaded files will be stored in sub-directories.
+
+B<mget -sD url>
+  Will display a direct link that can be pasted into a browser and quit.
+
+=head1 AUTHORS
+
+ Adam 'mulander' Wolk <netprobe@gmail.com>
+ defc0n <defc0n@da-mail.net>
+
+=head1 COPYING
+
+ Copyright (C) 2006, 2007 Adam 'mulander' Wolk, defc0n.
+ Free use of this software is granted under the terms of the GNU General Public License (GPL).
+
+
+=head1 BUGS
+
+ If you want to report a bug or ask for a feature please do it on our google issue tracker
+ http://code.google.com/p/mget/issues/list
+
+=head1 SEE ALSO
+
+wget(1) ffmpeg(1) mplayer(1)

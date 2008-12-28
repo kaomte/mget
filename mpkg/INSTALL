@@ -1,0 +1,11 @@
+You need cmake to compile these sources.
+mget should be installed before compiling mpkg.
+
+To install the mpkg run wrapper type
+cmake .
+make
+
+And with root privileges
+make install
+
+The script will install a single binary named mpkg
